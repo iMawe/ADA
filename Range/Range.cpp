@@ -26,8 +26,8 @@ int main(){
 	scanf("%i %i", &a, &b); // 4 1
 
 	vector< pair <int, int>> V;
-	int X[] = {1, 4, 4, 2, 3, 5}; 
-    int Y[] = {1, 3, 1, 2, 2, 4};
+	int X[] = {1, 4, 4, 2, 3, 5, 7}; 
+    int Y[] = {1, 3, 1, 2, 2, 4, 3};
 
     int n = sizeof(X) / sizeof(X[0]);
 
@@ -41,11 +41,18 @@ int main(){
 
 	vector< pair <int, int>>::iterator it = find(V.begin(), V.end(), aux);
 
-	while(it + 1 != V.begin()){
-        if(it->second <= b) cout<< "("<< it->first<< ", "<< it->second<< ")"<< endl;
-        if(it->first <= a) cout<< "("<< it->first<< ", "<< it->second<< ")"<< endl;
+	if(!binary_search(V.begin(), V.end(), aux)){
+		cout << "No existe\n";
+		return 0;
+	}
+
+	while(it != V.begin()){
+	    if(it->second <= b && it->first <= a) cout<< "("<< it->first<< ", "<< it->second<< ")"<< endl;
+	    
         it--;
     }
+
+    if(it == V.begin()) cout<< "("<< it->first<< ", "<< it->second<< ")"<< endl;
 
 	//cout<< it->first << endl;
 /*	
