@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include <algorithm>
 #include <map>
 
@@ -25,9 +26,16 @@ int main(){
 
 	scanf("%i %i", &a, &b); // 4 1
 
+	ofstream os("dibujo.dat");
 	vector< pair <int, int>> V;
 	int X[] = {1, 4, 4, 2, 3, 5, 7}; 
     int Y[] = {1, 3, 1, 2, 2, 4, 3};
+
+
+
+
+    for(int i = 0; i < 7; i++)
+    	os<< X[i]<< " "<< Y[i]<< endl;
 
     int n = sizeof(X) / sizeof(X[0]);
 
@@ -62,7 +70,7 @@ int main(){
              << V[i].second << endl; 
     }
 	*/
-
+//plot 'C:\Users\Mauricio\Documents\GitHub\ADA\ADA\Range\dibujo.dat' using 1:2:(sprintf("(%d, %d)", $1, $2)) with labels point pt 7 offset char 1,1 notitl
 
   	//while(!kbhit()) delay(1);
     return 0; 
