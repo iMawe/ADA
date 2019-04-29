@@ -3,6 +3,8 @@
 #include <fstream>
 #include <algorithm>
 #include <map>
+#include <stdlib.h>
+#include <time.h>
 
 
 using namespace std;
@@ -22,19 +24,31 @@ DrawnP(){
 int main(){
 	/*initwindow(650, 650);
 	DrawnP();*/
-	int a, b;
+	//int a, b;
+ 
 
-	scanf("%i %i", &a, &b); // 4 1
+	//scanf("%i %i", &a, &b); // 4 1
 
 	ofstream os("dibujo.dat");
 	vector< pair <int, int>> V;
-	int X[] = {1, 4, 4, 2, 3, 5, 7}; 
-    int Y[] = {1, 3, 1, 2, 2, 4, 3};
 
+	int num, tam = 100000, num2;
 
+    srand(time(NULL));
 
+    int X[tam]; 
+    int Y[tam];
 
-    for(int i = 0; i < 7; i++)
+    for(int i = 0; i < tam; i++){
+        num = 1 + rand() % (101 - 1);
+        num2 = 1 + rand() % (101 - 1);
+        X[i] = num;
+        Y[i] = num2;
+    }
+    
+	
+
+    for(int i = 0; i < tam; i++)
     	os<< X[i]<< " "<< Y[i]<< endl;
 
     int n = sizeof(X) / sizeof(X[0]);
@@ -42,11 +56,36 @@ int main(){
     for (int i=0; i<n; i++) 
         V.push_back( make_pair(X[i], Y[i]));
 
+    
 	sort(V.begin(), V.end());
 
-	auto aux = make_pair(a, b);
+	int c;
+	vector< pair <int, int>>::iterator jt;
+	vector< pair <int, int>>::iterator it = V.begin();
+
+	unsigned t0, t1;
+
+	t0 = clock();
+	while(it != V.end()){
+		c = 0;
+		jt = it; 
+		while(jt != V.begin()){
+			if(jt->second <= it->second && jt->first <= it->first) c++;
+			jt--;
+		}
+		//cout<< "La coordenada ("<< it->first<< ", "<< it->second<< ") "<< "tiene "<< c<< " componentes"<< endl;
+		it++;
+	}
+
+	t1 = clock();
+	 
+	double time = (double(t1 - t0)/CLOCKS_PER_SEC);
+	cout << "Execution Time: " << time << endl;
 
 
+	//auto aux = make_pair(a, b);
+
+/*
 	vector< pair <int, int>>::iterator it = find(V.begin(), V.end(), aux);
 
 	if(!binary_search(V.begin(), V.end(), aux)){
@@ -61,6 +100,10 @@ int main(){
     }
 
     if(it == V.begin()) cout<< "("<< it->first<< ", "<< it->second<< ")"<< endl;
+*/
+
+
+
 
 	//cout<< it->first << endl;
 /*	
