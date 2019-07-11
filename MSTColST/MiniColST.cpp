@@ -171,7 +171,7 @@ void printG(Edge MST[], int num){
 /** Funcion para hallar MST con k aristas azules.
  *  @param n, el numero de aristas que tiene el MST
  */
-void KruskalAristasAzules(int n){
+void AristasAzulesK(int n){
 	int orig, dest, peso;
 	char color;
 	int total = 0; //Peso total del MST
@@ -243,7 +243,7 @@ void KruskalAristasAzules(int n){
 
 /** Funcion para hallar MST con el numero maximo aristas azules.
 */
-void KruskalMaxAristasAzules(){
+void MaxAristasAzules(){
 	int orig, dest;
 	char color;
 	int numAristas = 0; //Numero de Aristas del MST
@@ -298,7 +298,7 @@ void KruskalMaxAristasAzules(){
 
 /** Funcion para hallar MST con el numero minimo aristas azules.
 */
-void KruskalMinAristasAzules(){
+void MinAristasAzules(){
 	int orig, dest;
 	char color;
 	int numAristas = 0; //Numero de Aristas del MST
@@ -363,7 +363,7 @@ void AristasAzules(){
 	for( int i = 0 ; i < E ; ++i )
         scanf("%d %d %d %c", &arista[i].orig, &arista[i].dest, &arista[i].peso, &arista[i].color);
 
-	KruskalAristasAzules(num);
+	AristasAzulesK(num);
 }
 
 /** Funcion para llamar al MST de Max y Min aristas azules.
@@ -375,9 +375,9 @@ void MaxMinAristasAzules(int select){
         arista[i].flag = false;
 	}
 	if(select == 1)
-		KruskalMaxAristasAzules();
+		MaxAristasAzules();
 	if(select == 2)
-		KruskalMinAristasAzules();
+		MinAristasAzules();
 }
 
 /** Funcion para iniciar el programa para realizar el MST-Coloreado.
