@@ -86,7 +86,7 @@ struct Edge{
         return peso < e.peso;
     }
 
-}arista[MAX]; //Arreglo de aristas para el uso en kruskal y prim
+}arista[MAX]; //Arreglo de aristas 
 Edge MST[MAX]; //Arreglo de aristas del MST encontrado
 
 
